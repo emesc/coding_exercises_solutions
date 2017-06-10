@@ -11,7 +11,7 @@ class Solution
       print "Enter a number to validate > "
       account = gets.chomp.downcase.strip
       credit_check = CreditCheck.new(account)
-      puts "#{credit_check.valid?}"
+      puts "#{credit_check.valid?}" if credit_check.integer? account
     end
   end
 end

@@ -40,4 +40,14 @@ describe CreditCheck do
     let(:number) { "342801633855673" }
     specify { expect(credit_check).not_to be_valid }
   end
+
+  describe "with an alphanumeric input" do
+    let(:number) { "hello123" }
+    specify { expect(credit_check).not_to be_valid }
+  end
+
+  describe "with an all character input" do
+    let(:number) { "hello" }
+    specify { expect(credit_check).not_to be_valid }
+  end
 end
