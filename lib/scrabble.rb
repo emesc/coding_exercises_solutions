@@ -1,4 +1,5 @@
 require 'json'
+require 'meaning'
 
 class Scrabble
   def self.letter_values
@@ -17,12 +18,17 @@ class Scrabble
   end
 
   def score(word)
-    valid?(word) ? word.chars.map { |char| value(char) }.reduce(:+) : 0
+    valid?(word) && english?(word) ? word.chars.map { |char| value(char) }.reduce(:+) : 0
   end
 
   private
     def valid?(word)
       !word.to_s.empty?
+    end
+
+    def english?(word)
+      word = Meaning::MeaningLab.new(word)
+      word.dictionary[:error].nil?
     end
 
     def value(char)
