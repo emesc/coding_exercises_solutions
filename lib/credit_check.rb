@@ -2,8 +2,12 @@ class CreditCheck
   attr_reader :check_digit, :account
 
   def initialize(account_string)
-    @account = account_string.chars.map(&:to_i)
-    @check_digit = account.last
+    if integer? account_string
+      @account = account_string.chars.map(&:to_i)
+      @check_digit = account.last
+    else
+      puts "Please enter an account number"
+    end
   end
 
   def double_every_other_digit
@@ -20,5 +24,11 @@ class CreditCheck
 
   def valid?
     sum_results % 10 == 0 ? true : false
+  rescue
+    false
+  end
+
+  def integer?(input)
+    !!input.match(/^[\d]+$/)
   end
 end
