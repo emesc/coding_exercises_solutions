@@ -41,5 +41,9 @@ describe Scrabble do
     it "does not score a nil" do
       expect(game.score(nil)).to eq 0
     end
+
+    it "only scores valid english words" do
+      expect(game.score("asdf")).to eq 0
+    end
   end
 end
