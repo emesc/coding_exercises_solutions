@@ -11,7 +11,7 @@ loop do
     puts "\n<<< Thank you and goodbye :-) >>>\n\n"
     break
   elsif COMMANDS.include? input
-    CodeTest.send input
+    Solution.send input
   else
     puts "\nI don't understand that command"
   end

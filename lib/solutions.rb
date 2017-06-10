@@ -1,4 +1,4 @@
-class CodeTest
+class Solution
   class << self
     def scrabble
       game = Scrabble.new
