@@ -1,12 +1,12 @@
 # Solutions to the Coding Problems
 Solves Scrabble Score and Credit Check
 
-## Scrabble
+### Scrabble
   * Insensitive to case
   * An empty word or nil scores 0
   * Scores only valid english words. Used meaning gem which is based on dictionary.cambridge.org site but made the app and tests run a bit slower.
 
-## Credit Check
+### Credit Check
   * Also checks whether the input is an integer
   * Works for American Express numbers
 
