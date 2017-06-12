@@ -1,7 +1,6 @@
 class Solution
   class << self
-    def scrabble
-      game = Scrabble.new
+    def scrabble(game)
       word = get_command("word", "score")
       puts "Score is: #{game.score(word)}"
     end
@@ -9,11 +8,13 @@ class Solution
     def credit
       account = get_command("number", "validate")
       credit_check = CreditCheck.new(account)
-      puts "#{credit_check.valid?}" if credit_check.integer? account
+      puts credit_check.integer?(account) && credit_check.valid? ? 
+        "valid" : "invalid"
     end
 
     def get_command(input, action)
-      print "Enter a #{input} to #{action} > "
+      puts "Enter a #{input} to #{action}"
+      print "> "
       gets.chomp.downcase.strip
     end
   end
