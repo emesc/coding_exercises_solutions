@@ -29,6 +29,6 @@ class CreditCheck
   end
 
   def integer?(input)
-    !!input.match(/^[\d]+$/)
+    !input.match(/^[\d]+$/).nil?
   end
 end

@@ -2,14 +2,19 @@ require 'json'
 require 'meaning'
 
 class Scrabble
-  def self.letter_values
-    data_path = File.join(File.dirname(__FILE__), "..", "data", "letter_values.json")
-    letter_values = File.read(data_path)
-    JSON.load(letter_values)
+  class << self
+    def filepath
+      File.join(File.dirname(__FILE__), "..", "data", "letter_values.json")
+    end
+
+    def letter_values
+      values = File.read(filepath)
+      JSON.load(values)
+    end
   end
 
   def initialize
-    if loaded?(self.class.letter_values)
+    if letter_values_loaded?
       puts "Letter values found"
     else
       puts "Letter values not found"
@@ -23,11 +28,10 @@ class Scrabble
 
   private
     def valid?(word)
-      !word.to_s.empty?
+      !(word.nil? || word.match(/^[a-zA-Z]+$/).nil?)
     end
 
     def english?(word)
-      word = word.match(/^[a-zA-Z]+$/).to_s
       word = Meaning::MeaningLab.new(word)
       word.dictionary[:error].nil?
     end
@@ -36,7 +40,7 @@ class Scrabble
       self.class.letter_values[char.upcase]
     end
 
-    def loaded?(file)
-      !!file
+    def letter_values_loaded?
+      !!self.class.letter_values
     end
 end
