@@ -25,7 +25,6 @@ a)
 b)
     Commands: credit or scrabble (quit to exit)
     > scrabble
-    Letter values found
     Enter a word to score
     > hello
     Score is: 8    
