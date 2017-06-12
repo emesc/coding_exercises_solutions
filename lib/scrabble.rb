@@ -27,6 +27,7 @@ class Scrabble
     end
 
     def english?(word)
+      word = word.match(/^[a-zA-Z]+$/).to_s
       word = Meaning::MeaningLab.new(word)
       word.dictionary[:error].nil?
     end
