@@ -4,7 +4,7 @@ Solves Scrabble Score and Credit Check
 ## Scrabble
   * Insensitive to case
   * An empty word or nil scores 0
-  * For scoring only valid english words, git checkout scrabble-english-check. This makes use of meaning gem which is based on dictionary.cambridge.org site. However, running the app and tests will be slower.
+  * Scores only valid english words. Used meaning gem which is based on dictionary.cambridge.org site but made the app and tests run a bit slower.
 
 ## Credit Check
   * Also checks whether the input is an integer
