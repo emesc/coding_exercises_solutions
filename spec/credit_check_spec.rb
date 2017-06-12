@@ -50,4 +50,9 @@ describe CreditCheck do
     let(:number) { "hello" }
     specify { expect(credit_check).not_to be_valid }
   end
+
+  describe "with special characters input" do
+    let(:number) { "[][]" }
+    specify { expect(credit_check).not_to be_valid }
+  end
 end
