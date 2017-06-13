@@ -1,8 +1,8 @@
 require 'scrabble'
 
 describe Scrabble do
-  let(:letter_values) {
-    <<-REF
+  let(:expected_letter_values) {
+    <<-LETTERS
     {
       "A": 1, "B": 3, "C": 3, "D": 2,
       "E": 1, "F": 4, "G": 2, "H": 4,
@@ -12,18 +12,19 @@ describe Scrabble do
       "U": 1, "V": 4, "W": 4, "X": 8,
       "Y": 4, "Z": 10
     }
-    REF
+    LETTERS
   }
 
   before do
-    @tile_values = Scrabble.letter_values
+    @tile_values = Scrabble.letter_values_json
+    @letters_json = JSON.load(expected_letter_values)
   end
 
   describe "game" do
     let(:game)   { Scrabble.new }
 
     it "loads letter values in expected form" do
-      expect(@tile_values).to eq JSON.load(letter_values)
+      expect(@tile_values).to eq @letters_json
     end
 
     it "is case insensitive" do
@@ -31,7 +32,7 @@ describe Scrabble do
     end
 
     it "scores a proper word" do
-      expect(game.score("word")).to eq 8
+      expect(game.score("word")).to eq(@letters_json["W"] + @letters_json["O"] + @letters_json["R"] + @letters_json["D"])
     end
 
     it "does not score an empty word" do
