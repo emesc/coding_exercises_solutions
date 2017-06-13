@@ -19,18 +19,26 @@ Solves Scrabble Score and Credit Check
 a)
 
   Commands: credit or scrabble (quit to exit)
+
   > credit
+
   Enter a number to validate
+
   > 4929735477250543
+
   valid
 
 b)
 
   Commands: credit or scrabble (quit to exit)
+
   > scrabble
+
   Enter a word to score
+
   > hello
-  Score is: 8    
+  
+  Score is: 8   
 
 ## Reference
 - https://gist.github.com/elle/b9739bc21eb348916a60622f3fb6e2e4
