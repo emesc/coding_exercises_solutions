@@ -7,9 +7,12 @@ class Scrabble
       File.join(File.dirname(__FILE__), "..", "data", "letter_values.json")
     end
 
-    def letter_values
-      values = File.read(filepath)
-      JSON.load(values)
+    def read_values
+      File.read(filepath)
+    end
+
+    def letter_values_json
+      JSON.load(read_values)
     end
   end
 
@@ -37,10 +40,14 @@ class Scrabble
     end
 
     def value(char)
-      self.class.letter_values[char.upcase]
+      find_letter_values[char.upcase]
     end
 
     def letter_values_loaded?
-      !!self.class.letter_values
+      !!find_letter_values
+    end
+
+    def find_letter_values
+      self.class.letter_values_json
     end
 end
