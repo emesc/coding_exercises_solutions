@@ -3,21 +3,18 @@ require 'meaning'
 
 class Scrabble
   class << self
-    def filepath
-      File.join(File.dirname(__FILE__), "..", "data", "letter_values.json")
-    end
-
-    def read_values
+    def letter_values_file
+      filepath = File.join(File.dirname(__FILE__), "..", "data", "letter_values.json")
       File.read(filepath)
     end
 
     def letter_values_json
-      JSON.load(read_values)
+      JSON.load(letter_values_file)
     end
   end
 
   def initialize
-    if letter_values_loaded?
+    if self.class.letter_values_json
       puts "Letter values found"
     else
       puts "Letter values not found"
@@ -40,14 +37,6 @@ class Scrabble
     end
 
     def value(char)
-      find_letter_values[char.upcase]
-    end
-
-    def letter_values_loaded?
-      !!find_letter_values
-    end
-
-    def find_letter_values
-      self.class.letter_values_json
+      self.class.letter_values_json[char.upcase]
     end
 end
