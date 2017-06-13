@@ -43,10 +43,6 @@ describe Scrabble do
       expect(game.score(nil)).to eq 0
     end
 
-    it "does not score non-cambridge dictionary words" do
-      expect(game.score("asdf")).to eq 0
-    end
-
     it "does not score alphanumeric string" do
       expect(game.score("hello123")).to eq 0
     end
