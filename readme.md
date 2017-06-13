@@ -4,7 +4,8 @@ Solves Scrabble Score and Credit Check
 ### Scrabble
   * Insensitive to case
   * An empty word or nil scores 0
-  * Scores only valid english words. Used meaning gem which is based on dictionary.cambridge.org site but made the app and tests run a bit slower.
+  * Master branch scrabble scores only valid english words. Used meaning gem which is based on dictionary.cambridge.org site but made the app and tests run a bit slower. 
+  * scrabble-no-dictionary branch runs faster but does not validate english words.
 
 ### Credit Check
   * Also checks whether the input is an integer
